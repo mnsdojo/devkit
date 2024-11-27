@@ -1,101 +1,200 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Link from "next/link";
+import { ArrowRight, Code, Zap } from "lucide-react";
+
+const tools = [
+  {
+    name: "JSON Formatter",
+    description: "Format and prettify JSON data",
+    link: "/json",
+  },
+  {
+    name: "YouTube Downloader",
+    description: "Download videos from YouTube",
+    link: "/youtube",
+  },
+  {
+    name: "Image Resizer",
+    description: "Resize and optimize images",
+    link: "/image",
+  },
+  {
+    name: "Base64 Encoder/Decoder",
+    description: "Encode and decode Base64 strings",
+    link: "/encoding",
+  },
+  {
+    name: "URL Encoder/Decoder",
+    description: "Encode and decode URLs",
+    link: "/encoding",
+  },
+  {
+    name: "Markdown Previewer",
+    description: "Preview Markdown in real-time",
+    link: "/markdown",
+  },
+  {
+    name: "Color Picker",
+    description: "Pick and convert colors",
+    link: "/color",
+  },
+  {
+    name: "Regex Tester",
+    description: "Test and debug regular expressions",
+    link: "/regex",
+  },
+  {
+    name: "File Hash Calculator",
+    description: "Calculate file hashes",
+    link: "/hash",
+  },
+  {
+    name: "Text Diff Checker",
+    description: "Compare text differences",
+    link: "/diff",
+  },
+  { name: "QR Code Generator", description: "Generate QR codes", link: "/qr" },
+  {
+    name: "Password Generator",
+    description: "Generate secure passwords",
+    link: "/password",
+  },
+  {
+    name: "Code Beautifier",
+    description: "Beautify and format code",
+    link: "/beautifier",
+  },
+  {
+    name: "SVG to PNG Converter",
+    description: "Convert SVG to PNG",
+    link: "/svg",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="space-y-12">
+      <section className="py-12 md:py-24 lg:py-32 xl:py-48">
+        <div
+         className="container px-4 md:px-6 max-w-7xl mx-auto"
+         >
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                DevToolkit: Your All-in-One Developer Companion
+              </h1>
+              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 px-4">
+                Streamline your workflow with our comprehensive set of
+                development tools. From code formatting to file conversion,
+                we've got you covered.
+              </p>
+            </div>
+            <div className="space-x-4 pt-4">
+              <Button asChild>
+                <Link href="#tools">
+                  Explore Tools <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/about">Learn More</Link>
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <div className="grid gap-6 items-center">
+            <div className="flex flex-col justify-center space-y-8 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Why Choose DevToolkit?
+                </h2>
+                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 mx-auto px-4">
+                  Our toolkit is designed to make your development process
+                  faster, easier, and more efficient.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 items-start lg:max-w-none px-4">
+              {/* Cards remain the same */}
+              <Card>
+                <CardHeader>
+                  <Zap className="h-10 w-10 mb-2 text-primary" />
+                  <CardTitle>Lightning Fast</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Perform tasks quickly with our optimized tools, saving you
+                    valuable development time.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Zap className="h-10 w-10 mb-2 text-primary" />
+                  <CardTitle>Lightning Fast</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Perform tasks quickly with our optimized tools, saving you
+                    valuable development time.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Zap className="h-10 w-10 mb-2 text-primary" />
+                  <CardTitle>Lightning Fast</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Perform tasks quickly with our optimized tools, saving you
+                    valuable development time.
+                  </p>
+                </CardContent>
+              </Card>
+              {/* Other cards remain the same */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tools Section */}
+      <section id="tools" className="py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">
+            Our Tools
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-4">
+            {tools.map((tool) => (
+              <Card key={tool.name}>
+                <CardHeader>
+                  <CardTitle>{tool.name}</CardTitle>
+                  <CardDescription>{tool.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Link
+                    href={tool.link}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Use {tool.name}
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
