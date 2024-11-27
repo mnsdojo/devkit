@@ -11,6 +11,7 @@ interface EditorProps {
   title: string;
   onChangeCode: (newCode: string) => void;
   onChangeTitle: (newTitle: string) => void;
+  reff: React.RefObject<HTMLDivElement>; // Add the reff prop
 }
 
 function Editor({
@@ -19,11 +20,13 @@ function Editor({
   language,
   code,
   title,
+  reff, // Destructure reff
   onChangeCode,
   onChangeTitle,
 }: EditorProps) {
   return (
     <div
+      ref={reff}
       className={`shadow-2xl rounded-xl min-w-[600px] border-gray-800 dark:border-white/20 border-2 `}
     >
       <header className="grid grid-cols-6 gap-3 items-center py-3 px-4">

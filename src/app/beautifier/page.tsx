@@ -47,6 +47,7 @@ function Page() {
           fontStyle={fontStyle}
           fontSize={fontSize.toString()}
           language={language}
+          reff={reff} // Pass ref here
           code={code}
           title={title}
           onChangeCode={handleCodeChange}
