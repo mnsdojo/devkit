@@ -1,7 +1,11 @@
-import React from "react";
+import PasswordGenerator from "./password.client";
 
 function Page() {
-  return <div>Page</div>;
+  return (
+    <div className="flex items-center justify-center h-screen overflow-hidden">
+      <PasswordGenerator />
+    </div>
+  );
 }
 
 export default Page;
