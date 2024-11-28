@@ -9,24 +9,10 @@ import {
 import Link from "next/link";
 import {
   ArrowRight,
-  Code,
   Zap,
-  Layers,
   Sparkles,
   Pen as Tool,
-  Target,
-  Download,
-  Image,
   Link as LinkIcon,
-  Type,
-  Palette,
-  Regex,
-  FileText,
-  Diff,
-  QrCode,
-  Lock,
-  Brush,
-  Edit,
 } from "lucide-react";
 import tools from "@/lib/constants";
 
