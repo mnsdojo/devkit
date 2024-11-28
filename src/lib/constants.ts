@@ -1,23 +1,20 @@
-
-
-
-import { 
-  Code, 
-  Layers, 
-  Target, 
-  Sparkles, 
-  Download, 
-  Image, 
-  Link as LinkIcon, 
-  Type, 
-  Palette, 
-  Regex, 
-  FileText, 
-  Diff, 
-  QrCode, 
-  Lock, 
-  Brush, 
-  Edit 
+import {
+  Code,
+  Layers,
+  Target,
+  Sparkles,
+  Download,
+  Image,
+  Link as LinkIcon,
+  Type,
+  Palette,
+  Regex,
+  FileText,
+  Diff,
+  QrCode,
+  Lock,
+  Brush,
+  Edit,
 } from "lucide-react";
 
 const tools = [
@@ -48,7 +45,7 @@ const tools = [
   {
     name: "URL Encoder/Decoder",
     description: "Encode and decode URLs",
-    link: "/encoding",
+    link: "/url-encoding",
     icon: LinkIcon,
   },
   {
@@ -81,11 +78,11 @@ const tools = [
     link: "/diff",
     icon: Diff,
   },
-  { 
-    name: "QR Code Generator", 
-    description: "Generate QR codes", 
+  {
+    name: "QR Code Generator",
+    description: "Generate QR codes",
     link: "/qr",
-    icon: QrCode 
+    icon: QrCode,
   },
   {
     name: "Password Generator",
