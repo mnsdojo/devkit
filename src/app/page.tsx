@@ -7,195 +7,129 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, Code, Zap } from "lucide-react";
-
-const tools = [
-  {
-    name: "JSON Formatter",
-    description: "Format and prettify JSON data",
-    link: "/json",
-  },
-  {
-    name: "YouTube Downloader",
-    description: "Download videos from YouTube",
-    link: "/youtube",
-  },
-  {
-    name: "Image Resizer",
-    description: "Resize and optimize images",
-    link: "/image",
-  },
-  {
-    name: "Base64 Encoder/Decoder",
-    description: "Encode and decode Base64 strings",
-    link: "/encoding",
-  },
-  {
-    name: "URL Encoder/Decoder",
-    description: "Encode and decode URLs",
-    link: "/encoding",
-  },
-  {
-    name: "Markdown Previewer",
-    description: "Preview Markdown in real-time",
-    link: "/markdown",
-  },
-  {
-    name: "Color Picker",
-    description: "Pick and convert colors",
-    link: "/color",
-  },
-  {
-    name: "Regex Tester",
-    description: "Test and debug regular expressions",
-    link: "/regex",
-  },
-  {
-    name: "File Hash Calculator",
-    description: "Calculate file hashes",
-    link: "/hash",
-  },
-  {
-    name: "Text Diff Checker",
-    description: "Compare text differences",
-    link: "/diff",
-  },
-  { name: "QR Code Generator", description: "Generate QR codes", link: "/qr" },
-  {
-    name: "Password Generator",
-    description: "Generate secure passwords",
-    link: "/password",
-  },
-  {
-    name: "Code Beautifier",
-    description: "Beautify and format code",
-    link: "/beautifier",
-  },
-  {
-    name: "SVG to PNG Converter",
-    description: "Convert SVG to PNG",
-    link: "/svg",
-  },
-  {
-    name: "Shapes Generator",
-    description: "Beautiful Shapes Generator",
-    link: "/shapes",
-  },
-];
+import {
+  ArrowRight,
+  Code,
+  Zap,
+  Layers,
+  Sparkles,
+  Pen as Tool,
+  Target,
+  Download,
+  Image,
+  Link as LinkIcon,
+  Type,
+  Palette,
+  Regex,
+  FileText,
+  Diff,
+  QrCode,
+  Lock,
+  Brush,
+  Edit,
+} from "lucide-react";
+import tools from "@/lib/constants";
 
 export default function Home() {
   return (
-    <div className="space-y-12">
-      <section className="py-12 md:py-24 lg:py-32 xl:py-48">
-        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                DevToolkit: Your All-in-One Developer Companion
-              </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 px-4">
-                Streamline your workflow with our comprehensive set of
-                development tools. From code formatting to file conversion,
-                we've got you covered.
-              </p>
-            </div>
-            <div className="space-x-4 pt-4">
-              <Button asChild>
-                <Link href="#tools">
-                  Explore Tools <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/about">Learn More</Link>
-              </Button>
-            </div>
+    <div className="bg-background text-foreground min-h-screen">
+      {/* Hero Section */}
+      <section className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-48 space-y-6">
+        <div className="flex flex-col items-center text-center space-y-4">
+          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl max-w-4xl">
+            DevToolkit: Your Developer Companion
+          </h1>
+          <p className="max-w-[750px] text-muted-foreground text-lg px-4">
+            Accelerate your development workflow with a powerful suite of tools
+            designed to simplify complex tasks and boost your productivity.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <Button asChild>
+              <Link href="#tools">
+                Explore Tools <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href="/about">Learn More</Link>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-          <div className="grid gap-6 items-center">
-            <div className="flex flex-col justify-center space-y-8 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Why Choose DevToolkit?
-                </h2>
-                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 mx-auto px-4">
-                  Our toolkit is designed to make your development process
-                  faster, easier, and more efficient.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 items-start lg:max-w-none px-4">
-              {/* Cards remain the same */}
-              <Card>
-                <CardHeader>
-                  <Zap className="h-10 w-10 mb-2 text-primary" />
-                  <CardTitle>Lightning Fast</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Perform tasks quickly with our optimized tools, saving you
-                    valuable development time.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <Zap className="h-10 w-10 mb-2 text-primary" />
-                  <CardTitle>Lightning Fast</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Perform tasks quickly with our optimized tools, saving you
-                    valuable development time.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <Zap className="h-10 w-10 mb-2 text-primary" />
-                  <CardTitle>Lightning Fast</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Perform tasks quickly with our optimized tools, saving you
-                    valuable development time.
-                  </p>
-                </CardContent>
-              </Card>
-              {/* Other cards remain the same */}
-            </div>
-          </div>
+      <section className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">
+            Why DevToolkit?
+          </h2>
+          <p className="max-w-[750px] mx-auto text-muted-foreground px-4">
+            We've crafted a toolkit that transforms your development experience
+            with speed, efficiency, and intuitive design.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              icon: Zap,
+              title: "Lightning Fast",
+              description:
+                "Optimized tools that execute tasks in milliseconds.",
+            },
+            {
+              icon: Tool,
+              title: "Comprehensive",
+              description:
+                "A wide range of tools covering multiple development needs.",
+            },
+            {
+              icon: Sparkles,
+              title: "User-Friendly",
+              description:
+                "Intuitive interfaces that make complex tasks simple.",
+            },
+          ].map((feature, index) => (
+            <Card key={index}>
+              <CardHeader>
+                <feature.icon className="h-6 w-6 mb-2" />
+                <CardTitle>{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
       {/* Tools Section */}
-      <section id="tools" className="py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">
-            Our Tools
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-4">
-            {tools.map((tool) => (
-              <Card key={tool.name}>
-                <CardHeader>
+      <section
+        id="tools"
+        className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Our Tools</h2>
+          <p className="max-w-[750px] mx-auto text-muted-foreground px-4">
+            A comprehensive collection of developer utilities to streamline your
+            workflow.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tools.map((tool) => (
+            <Card key={tool.name}>
+              <CardHeader className="flex flex-row items-center space-x-4">
+                <tool.icon className="h-6 w-6" />
+                <div>
                   <CardTitle>{tool.name}</CardTitle>
                   <CardDescription>{tool.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link
-                    href={tool.link}
-                    className="text-blue-500 hover:underline"
-                  >
-                    Use {tool.name}
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Link href={tool.link} className="text-primary hover:underline">
+                  Use {tool.name}
+                </Link>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
     </div>
