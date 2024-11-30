@@ -1,44 +1,45 @@
+"use client";
 
-
-"use client"
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { AlertCircle } from 'lucide-react'
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { AlertCircle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function URLEncoderDecoder() {
-  const [input, setInput] = useState("")
-  const [output, setOutput] = useState("")
-  const [isEncoding, setIsEncoding] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [isEncoding, setIsEncoding] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleEncodeDecode = () => {
-    setError(null)
+    setError(null);
     try {
       if (isEncoding) {
-        setOutput(encodeURIComponent(input))
+        setOutput(encodeURIComponent(input));
       } else {
-        setOutput(decodeURIComponent(input))
+        setOutput(decodeURIComponent(input));
       }
     } catch (e) {
-      setError(`Invalid input for ${isEncoding ? "encoding" : "decoding"}`)
+      console.error(e);
+      setError(`Invalid input for ${isEncoding ? "encoding" : "decoding"}`);
     }
-  }
+  };
 
   const handleClear = () => {
-    setInput("")
-    setOutput("")
-    setError(null)
-  }
+    setInput("");
+    setOutput("");
+    setError(null);
+  };
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">URL {isEncoding ? "Encoder" : "Decoder"}</h2>
+        <h2 className="text-2xl font-bold">
+          URL {isEncoding ? "Encoder" : "Decoder"}
+        </h2>
         <div className="flex items-center space-x-2">
           <Switch
             id="encoding-mode"
@@ -53,7 +54,9 @@ export default function URLEncoderDecoder() {
 
       <div className="space-y-4">
         <Textarea
-          placeholder={`Enter ${isEncoding ? "URL or text to encode" : "encoded URL to decode"}`}
+          placeholder={`Enter ${
+            isEncoding ? "URL or text to encode" : "encoded URL to decode"
+          }`}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="min-h-[100px]"
@@ -82,6 +85,5 @@ export default function URLEncoderDecoder() {
         </Alert>
       )}
     </div>
-  )
+  );
 }
-

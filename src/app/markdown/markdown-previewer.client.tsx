@@ -1,6 +1,7 @@
 "use client";
-import { useState, useRef } from "react";
-import ReactMarkdown from "react-markdown";
+
+import React, { useState, useRef, ChangeEvent } from "react";
+import ReactMarkdown, { Components } from "react-markdown";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,34 +15,84 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import MarkDownToolbar from "./markdown-toolbar";
 
+// Define types for code component props
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
 export function MarkdownPreviewer() {
-  const [markdown, setMarkdown] = useState(
-    '# Hello, Markdown!\n\nThis is a live preview with syntax highlighting.\n\n## Features\n\n- Real-time preview\n- Supports all Markdown syntax\n- Styled output\n- Syntax highlighting for code blocks\n\n```javascript\nconst greeting = "Hello, World!";\nconsole.log(greeting);\n\nfunction example() {\n return "This is a syntax highlighted code block";\n}\n```\n\n> This is a blockquote.\n\n[Learn more about Markdown](https://www.markdownguide.org/)'
-  );
+  // Default markdown content with type annotation
+  const defaultMarkdown = `# Hello, Markdown!
+
+This is a live preview with syntax highlighting.
+
+## Features
+
+- Real-time preview
+- Supports all Markdown syntax
+- Styled output
+- Syntax highlighting for code blocks
+
+\`\`\`javascript
+const greeting = "Hello, World!";
+console.log(greeting);
+
+function example() {
+  return "This is a syntax highlighted code block";
+}
+\`\`\`
+
+> This is a blockquote.
+
+[Learn more about Markdown](https://www.markdownguide.org/)`;
+
+  const [markdown, setMarkdown] = useState<string>(defaultMarkdown);
+
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const insertMarkdown = (text: string) => {
+  const insertMarkdown = (text: string): void => {
     if (textareaRef.current) {
-      const start = textareaRef.current.selectionStart;
-      const end = textareaRef.current.selectionEnd;
+      const { selectionStart, selectionEnd } = textareaRef.current;
       const newMarkdown =
-        markdown.substring(0, start) + text + markdown.substring(end);
+        markdown.substring(0, selectionStart) +
+        text +
+        markdown.substring(selectionEnd);
+
       setMarkdown(newMarkdown);
-      setTimeout(() => {
+
+      requestAnimationFrame(() => {
         if (textareaRef.current) {
-          textareaRef.current.selectionStart =
-            textareaRef.current.selectionEnd = start + text.length;
+          const newCursorPosition = selectionStart + text.length;
+          textareaRef.current.setSelectionRange(
+            newCursorPosition,
+            newCursorPosition
+          );
           textareaRef.current.focus();
         }
-      }, 0);
+      });
     }
   };
 
-  
-  const components: any = {
-    code({ node, inline, className, children, ...props }: any) {
-      const match = /language-(\w+)/.exec(className || "");
-      return !inline && match ? (
+  const handleMarkdownChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    setMarkdown(e.target.value);
+  };
+
+  const components: Components = {
+    code({ node, inline, className, children, ...props }: CodeProps) {
+      const match = className ? /language-(\w+)/.exec(className) : null;
+
+      if (inline || !match) {
+        return (
+          <code {...props} className={className}>
+            {children}
+          </code>
+        );
+      }
+
+      return (
         <SyntaxHighlighter
           {...props}
           language={match[1]}
@@ -50,10 +101,6 @@ export function MarkdownPreviewer() {
         >
           {String(children).replace(/\n$/, "")}
         </SyntaxHighlighter>
-      ) : (
-        <code {...props} className={className}>
-          {children}
-        </code>
       );
     },
   };
@@ -75,7 +122,7 @@ export function MarkdownPreviewer() {
               ref={textareaRef}
               placeholder="Write your Markdown here..."
               value={markdown}
-              onChange={(e) => setMarkdown(e.target.value)}
+              onChange={handleMarkdownChange}
               className="min-h-[500px] font-mono"
             />
           </div>
@@ -89,3 +136,5 @@ export function MarkdownPreviewer() {
     </Card>
   );
 }
+
+export default MarkdownPreviewer;

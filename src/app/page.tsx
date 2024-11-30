@@ -43,8 +43,8 @@ export default function Home() {
             Why DevToolkit?
           </h2>
           <p className="max-w-[750px] mx-auto text-muted-foreground px-4">
-            We've crafted a toolkit that transforms your development experience
-            with speed, efficiency, and intuitive design.
+            We&apos;ve crafted a toolkit that transforms your development
+            experience with speed, efficiency, and intuitive design.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
