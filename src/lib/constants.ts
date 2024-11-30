@@ -25,6 +25,12 @@ const tools = [
     icon: Code,
   },
   {
+    name: "JSON2Typescript",
+    description: "Format and prettify JSON data",
+    link: "/json2typescript",
+    icon: Code,
+  },
+  {
     name: "YouTube Downloader",
     description: "Download videos from YouTube",
     link: "/youtube",
