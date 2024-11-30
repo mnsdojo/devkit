@@ -17,7 +17,6 @@ import MarkDownToolbar from "./markdown-toolbar";
 
 // Define types for code component props
 interface CodeProps {
-  node?: any;
   inline?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -81,7 +80,7 @@ function example() {
   };
 
   const components: Components = {
-    code({ node, inline, className, children, ...props }: CodeProps) {
+    code({ inline, className, children, ...props }: CodeProps) {
       const match = className ? /language-(\w+)/.exec(className) : null;
 
       if (inline || !match) {
