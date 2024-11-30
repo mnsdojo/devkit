@@ -1,6 +1,5 @@
 import {
   Code,
-  Layers,
   Target,
   Sparkles,
   Download,

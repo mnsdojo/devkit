@@ -7,13 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Zap,
-  Sparkles,
-  Pen as Tool,
-  Link as LinkIcon,
-} from "lucide-react";
+import { ArrowRight, Zap, Sparkles, Pen as Tool } from "lucide-react";
 import tools from "@/lib/constants";
 
 export default function Home() {

@@ -39,7 +39,6 @@ const MenuBar: React.FC<MenuBarProps> = ({
   fontSize,
   onFontChange,
   onLanguageChange,
-  onThemeChange,
   onFontSizeChange,
   reff,
   onGithubClick,
@@ -144,28 +143,6 @@ const MenuBar: React.FC<MenuBarProps> = ({
               </TooltipTrigger>
               <TooltipContent>Select Language</TooltipContent>
             </Tooltip>
-            {/* Theme Selector
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div>
-                  <Select onValueChange={onThemeChange} value={theme}>
-                    <SelectTrigger className="w-[120px] border-none hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <SelectValue
-                        placeholder={themes[theme]?.name || "Theme"}
-                      />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {Object.entries(themes).map(([key, value]) => (
-                        <SelectItem key={key} value={key}>
-                          {value.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>Select Theme</TooltipContent>
-            </Tooltip> */}
           </div>
 
           <div className="flex items-center space-x-2">

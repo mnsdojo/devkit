@@ -11,9 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import React from "react";
-
-import { useState } from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 
 function SvgToClient() {
   const [svgInput, setSvgInput] = useState("");
@@ -54,6 +53,7 @@ function SvgToClient() {
       setLoading(false);
     }
   }
+
   return (
     <>
       <Card className="w-full max-w-3xl mx-auto">
@@ -90,11 +90,14 @@ function SvgToClient() {
           {pngUrl && (
             <div className="space-y-2">
               <Label>Converted PNG</Label>
-              <img
-                src={pngUrl}
-                alt="Converted PNG"
-                className="max-w-full h-auto"
-              />
+              <div className="relative w-full h-64">
+                <Image
+                  src={pngUrl}
+                  alt="Converted PNG"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
               <Button asChild>
                 <a href={pngUrl} download="converted.png">
                   Download PNG
