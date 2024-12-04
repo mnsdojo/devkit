@@ -60,11 +60,8 @@ function Json2Typescript() {
     try {
       setError(null);
 
-      const parsedJson = JSON.parse(jsonInput);
 
-      const converted = convertJsonToTypescript(parsedJson);
-
-      setTypescriptOutput(converted);
+      setTypescriptOutput("Something went wrong....");
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : "An unknown error occurred";
