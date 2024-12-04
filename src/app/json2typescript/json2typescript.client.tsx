@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/card";
 
 import { Download, Clipboard, ArrowRight } from "lucide-react";
-import { convertJsonToTypescript } from "./converter";
 
 function Json2Typescript() {
   const [jsonInput, setJsonInput] = useState<string>(
@@ -59,7 +58,6 @@ function Json2Typescript() {
   const handleConvert = useCallback(() => {
     try {
       setError(null);
-
 
       setTypescriptOutput("Something went wrong....");
     } catch (err) {
